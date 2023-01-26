@@ -1,5 +1,4 @@
 package org.wheatherForecast;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -28,7 +27,7 @@ public class GitHubApiCaller
             HttpEntity getEntity = response.getEntity();
             String res = EntityUtils.toString(getEntity);
             JSONObject json = new JSONObject(res);
-            String username = json.getString("login");
+            String username = json.getString("loin");
             int loginid = json.getInt("id");
             System.out.println("username: "+username);
             System.out.println("loginID: "+loginid);
