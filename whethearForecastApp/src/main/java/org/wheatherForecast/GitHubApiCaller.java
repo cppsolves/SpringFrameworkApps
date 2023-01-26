@@ -1,5 +1,4 @@
 package org.wheatherForecast;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpException;
 import org.apache.http.client.methods.CloseableHttpResponse;
