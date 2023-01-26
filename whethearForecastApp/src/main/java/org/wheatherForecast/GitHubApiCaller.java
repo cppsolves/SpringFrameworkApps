@@ -27,7 +27,7 @@ public class GitHubApiCaller
             HttpEntity getEntity = response.getEntity();
             String res = EntityUtils.toString(getEntity);
             JSONObject json = new JSONObject(res);
-            String username = json.getString("loin");
+            String username = json.getString("login");
             int loginid = json.getInt("id");
             System.out.println("username: "+username);
             System.out.println("loginID: "+loginid);
