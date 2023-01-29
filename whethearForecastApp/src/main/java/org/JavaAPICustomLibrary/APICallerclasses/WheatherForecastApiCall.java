@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class WheatherForecastApiCall
 {
-    public void callWheatherForecastApi() throws URISyntaxException, IOException,JSONException
+    public void callWheatherForecastApi() throws URISyntaxException, IOException,JSONException,StatusNotFoundException
     {
         System.out.println("Please enter the location");
         Scanner scn = new Scanner(System.in);

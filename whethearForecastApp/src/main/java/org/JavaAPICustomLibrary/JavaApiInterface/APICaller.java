@@ -1,4 +1,5 @@
 package org.JavaAPICustomLibrary.JavaApiInterface;
+import org.JavaAPICustomLibrary.APICallerclasses.ChuckNorrisApiCall;
 import org.json.JSONException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -10,8 +11,8 @@ public class APICaller
     {
         try
         {
-            JsonPlaceHolderAPICall ApiObj = new JsonPlaceHolderAPICall();
-            ApiObj.JsonAPICall();
+            ChuckNorrisApiCall APIobj = new ChuckNorrisApiCall();
+            APIobj.ChuckNorrisapiCall();
         }
         catch (URISyntaxException | IOException | StatusNotFoundException e)
         {
