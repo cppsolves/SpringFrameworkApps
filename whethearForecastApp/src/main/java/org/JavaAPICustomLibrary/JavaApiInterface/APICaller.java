@@ -3,29 +3,37 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import org.JavaAPICustomLibrary.CustomExceptionCollection.StatusNotFoundException;
-import org.JavaAPICustomLibrary.APICallerclasses.WheatherForecastApiCall;
-
+import org.JavaAPICustomLibrary.APICallerclasses.JsonPlaceHolderAPICall;
 public class APICaller
 {
     public static void main(String[]args)
     {
         try
         {
-            WheatherForecastApiCall  Api = new WheatherForecastApiCall();
-            Api.callWheatherForecastApi();
+            JsonPlaceHolderAPICall ApiObj = new JsonPlaceHolderAPICall();
+            ApiObj.JsonAPICall();
         }
         catch (URISyntaxException | IOException | StatusNotFoundException e)
         {
             if(e.getClass().getSimpleName() == "StatusNotFoundException")
             {
-                throw new StatusNotFoundException("Connectivity issue!");
+                throw new StatusNotFoundException("Possible Connectivity error!");
             }
-            e.printStackTrace();
+            else if(e.getClass().getSimpleName() == "URISyntaxException")
+            {
+                e.printStackTrace();
+                System.out.println("Possible JSONFormat/URISyntax Error!");
+            }
+            else
+            {
+                e.printStackTrace();
+                System.out.println("Possible IO Error/Unknown error occurred!");
+            }
         }
         catch(JSONException e)
         {
             e.printStackTrace();
-            System.out.println("Possible error in provided key values");
+            System.out.println("Unknown JSON Format");
         }
     }
 }
