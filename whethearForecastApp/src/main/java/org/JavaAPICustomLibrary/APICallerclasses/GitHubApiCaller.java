@@ -1,6 +1,5 @@
-package org.wheatherForecast;
+package org.JavaAPICustomLibrary.APICallerclasses;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
@@ -9,14 +8,13 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.Closeable;
+import org.JavaAPICustomLibrary.CustomExceptionCollection.StatusNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.rmi.StubNotFoundException;
+
 public class GitHubApiCaller
 {
-    public void GitHubApiCallermethod() throws URISyntaxException, StatusNotFoundException,IOException, JSONException, HttpException
+    public void GitHubApiCallermethod() throws URISyntaxException, StatusNotFoundException,IOException, JSONException
     {
         URIBuilder builder = new URIBuilder("https://api.github.com/users/cppsolves");
         HttpGet getdata = new HttpGet(builder.build());
@@ -40,3 +38,4 @@ public class GitHubApiCaller
     }
 
 }
+

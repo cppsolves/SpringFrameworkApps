@@ -1,7 +1,6 @@
-package org.wheatherForecast;
-import org.apache.commons.codec.binary.StringUtils;
+package org.JavaAPICustomLibrary.APICallerclasses;
+
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
@@ -11,47 +10,14 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.JavaAPICustomLibrary.CustomExceptionCollection.StatusNotFoundException;
 import java.io.IOException;
-import java.util.*;
 import java.net.URISyntaxException;
+import java.util.Scanner;
 
-
-public class WheatherForcastApp {
-    public static void main(String[] args)
-    {
-
-        try
-        {
-            GitHubApiCaller gitApi = new GitHubApiCaller();
-            gitApi.GitHubApiCallermethod();;
-        }
-        catch (URISyntaxException e)
-        {
-            System.out.println(e);
-        }
-        catch (IOException e)
-        {
-            System.out.println(e);
-        }
-        catch(StatusNotFoundException e)
-        {
-            System.out.print(e);
-        }
-        catch(JSONException e)
-        {
-            e.printStackTrace();
-            System.out.println("Possible error in provided key values");
-        }
-        catch(HttpException e)
-        {
-            e.printStackTrace();
-            System.out.println("connectivity error!");
-        }
-    }
-    /*
-     * This is a method forecast method API and shows the data
-    */
-    public static void callWheatherForecastApi() throws URISyntaxException, IOException
+public class WheatherForecastApiCall
+{
+    public void callWheatherForecastApi() throws URISyntaxException, IOException,JSONException
     {
         System.out.println("Please enter the location");
         Scanner scn = new Scanner(System.in);
@@ -65,7 +31,6 @@ public class WheatherForcastApp {
         HttpGet getData = new HttpGet(builder.build());
         CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = httpClient.execute(getData);
-        //System.out.println(response);
         if(response.getStatusLine().getStatusCode() == 200)
         {
             HttpEntity responseEntity = response.getEntity();
@@ -89,9 +54,9 @@ public class WheatherForcastApp {
         }
         else
         {
-            System.out.println("Something went wrong!");
-            return;
+            throw new StatusNotFoundException("Program Exiting, Status not found!");
         }
         httpClient.close();
     }
 }
+
