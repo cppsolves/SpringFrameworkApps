@@ -30,12 +30,12 @@ public class WheatherBitApiCall
         JSONObject jboj = new JSONObject(result);
         JSONArray Jarr = new JSONArray(jboj.getJSONArray("minutely"));
         System.out.println("minutely: [");
-        System.out.println("\t{");
         for(int idx = 0 ;idx<Jarr.length();idx++)
         {
+            System.out.println("\t{");
             JSONObject obj = Jarr.getJSONObject(idx);
             double precip = obj.getDouble("precip");
-            System.out.println("\t\tprecip: "+precip+" ,");
+            System.out.println("\t\t\"precip\": "+precip+" ,");
             double snow = obj.getDouble("snow");
             System.out.println("\t\tsnow: "+snow+" ,");
             double temp = obj.getDouble("temp");

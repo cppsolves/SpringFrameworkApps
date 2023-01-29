@@ -12,8 +12,8 @@ public class APICaller
     {
         try
         {
-            WheatherBitApiCall APIobj = new WheatherBitApiCall();
-            APIobj.WheatherBitCall();
+            JsonPlaceHolderAPICall Apiobj = new JsonPlaceHolderAPICall();
+            Apiobj.JsonAPICall();
         }
         catch (URISyntaxException | IOException | StatusNotFoundException e)
         {

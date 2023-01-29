@@ -28,19 +28,21 @@ public class JsonPlaceHolderAPICall
         HttpEntity entity = response.getEntity();
         String result = EntityUtils.toString(entity);
         JSONArray Jarr = new JSONArray(result);
+        System.out.println("[");
         for(int idx=0;idx<Jarr.length();idx++)
         {
             JSONObject jbj = (JSONObject) Jarr.get(idx);
             int userId = jbj.getInt("userId");
             int id = jbj.getInt("id");
             String title = jbj.getString("title");
-            System.out.println("{");
-            System.out.println("\t"+"userId: "+userId);
-            System.out.println("\t"+"id: "+id);
-            System.out.println("\t"+"title: "+title);
-            if(idx < Jarr.length()-1) System.out.println("},");
-            else System.out.println("}");
+            System.out.println("\t{");
+            System.out.println("\t\t"+"\"userId\": "+userId+",");
+            System.out.println("\t\t"+"\"id\": "+id+",");
+            System.out.println("\t\t"+"\"title\": "+"\""+title+"\"");
+            if(idx < Jarr.length()-1) System.out.println("\t},");
+            else System.out.println("\t}");
         }
+        System.out.println("]");
         httpclient.close();
         response.close();
     }
