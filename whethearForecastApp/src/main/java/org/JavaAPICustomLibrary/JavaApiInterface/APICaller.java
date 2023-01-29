@@ -4,6 +4,7 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import org.JavaAPICustomLibrary.CustomExceptionCollection.StatusNotFoundException;
+import org.JavaAPICustomLibrary.APICallerclasses.WheatherBitApiCall;
 import org.JavaAPICustomLibrary.APICallerclasses.JsonPlaceHolderAPICall;
 public class APICaller
 {
@@ -11,8 +12,8 @@ public class APICaller
     {
         try
         {
-            ChuckNorrisApiCall APIobj = new ChuckNorrisApiCall();
-            APIobj.ChuckNorrisapiCall();
+            WheatherBitApiCall APIobj = new WheatherBitApiCall();
+            APIobj.WheatherBitCall();
         }
         catch (URISyntaxException | IOException | StatusNotFoundException e)
         {
