@@ -1,8 +1,8 @@
 package org.JavaAPICustomLibrary.APICallerclasses;
 
-import org.JavaAPICustomLibrary.CustomExceptionCollection.StatusNotFoundException;
+//import org.JavaAPICustomLibrary.CustomExceptionCollection.StatusNotFoundException;
 import org.apache.http.HttpEntity;
-import org.apache.http.client.ClientProtocolException;
+//import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
@@ -12,10 +12,9 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.rmi.StubNotFoundException;
+//import java.rmi.StubNotFoundException;
 
 public class JsonPlaceHolderAPICall
 {

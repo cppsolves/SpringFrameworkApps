@@ -37,14 +37,13 @@ public class WheatherBitApiCall
             double precip = obj.getDouble("precip");
             System.out.println("\t\t\"precip\": "+precip+" ,");
             double snow = obj.getDouble("snow");
-            System.out.println("\t\tsnow: "+snow+" ,");
+            System.out.println("\t\t\"snow\": "+snow+" ,");
             double temp = obj.getDouble("temp");
-            System.out.println("\t\ttemp: "+temp+" ,");
-            int ts = obj.getInt("ts");
+            System.out.println("\t\t\"temp\": "+temp+" ,");
             String date = obj.getString("timestamp_local");
-            System.out.println("\t\ttimestamp_local: "+date+" ,");
+            System.out.println("\t\t\"timestamp_local\": "+"\""+date+"\""+",");
             String date1 = obj.getString("timestamp_utc");
-            System.out.println("\t\ttimestamp_utc: "+date1);
+            System.out.println("\t\t\"timestamp_utc\": "+"\""+date1+"\"");
             if(idx < Jarr.length()-1) System.out.println("\t},");
             else System.out.println("\t}");
         }
