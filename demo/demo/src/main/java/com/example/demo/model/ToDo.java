@@ -6,7 +6,7 @@ public class ToDo
     int id;
     String author;
 
-    int count;
+    public int count;
 
     public ToDo(int count,String name, int id, String author) {
         this.name = name;

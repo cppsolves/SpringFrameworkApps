@@ -1,15 +1,13 @@
-package com.example.demo.masterAPI;
-
+package com.example.demo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Springintialize
+public class ToDoApplication
 {
-	public static void main(String[] args) throws JsonProcessingException
-	{
-		SpringApplication.run(Springintialize.class, args);
-	}
+    public static void main(String[] args) throws JsonProcessingException {
+        SpringApplication.run(ToDoApplication.class, args);
+    }
 }
