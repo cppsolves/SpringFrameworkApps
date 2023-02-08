@@ -12,6 +12,7 @@ public class UserService {
     public UserService(){
         list_ = new ArrayList<>();
     }
+
     public void adduser(User obj){
         list_.add(obj);
     }

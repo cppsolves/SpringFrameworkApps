@@ -7,12 +7,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
 @RestController
 @RequestMapping("masterUser")
 public class UserController {
-    @Autowired
+
     private UserService userservice;
+    @Autowired
+    public void setter(UserService obj) {
+        this.userservice =  obj;
+    }
     @PostMapping ("adduser")
     public ResponseEntity<User> add(@RequestBody User obj){
         userservice.adduser(obj);
