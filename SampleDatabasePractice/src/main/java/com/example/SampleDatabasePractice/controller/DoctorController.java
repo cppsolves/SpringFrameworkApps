@@ -31,7 +31,7 @@ public class DoctorController {
 
         AcknowledgeEntity acknowledgeEntity = new AcknowledgeEntity();
 
-        if(json.has("doctorName")){ // just for practice
+        if(!json.has("doctorName")){ // just for practice
             acknowledgeEntity.setErrorMessage("invalid input");
             MessageCollection[][] arr = new MessageCollection[][]{
                     {new MessageCollection("mandatory params missing",new String[]{"doctorId","DoctorName"})},
@@ -40,6 +40,6 @@ public class DoctorController {
             acknowledgeEntity.setMessageDetails(arr);
             return new ResponseEntity<AcknowledgeEntity>(acknowledgeEntity,HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<AcknowledgeEntity>(acknowledgeEntity,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<AcknowledgeEntity>(acknowledgeEntity,HttpStatus.OK);
     }
 }
