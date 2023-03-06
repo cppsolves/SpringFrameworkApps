@@ -9,6 +9,8 @@ import java.sql.Time;
 import java.time.LocalTime;
 import java.util.Date;
 
+import java.sql.Blob;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -33,4 +35,6 @@ public class User {
     private Date date;
     @Column(name = "time")
     private Time time;
+
+
 }

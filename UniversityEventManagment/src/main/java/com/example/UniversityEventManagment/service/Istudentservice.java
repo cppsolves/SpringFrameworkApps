@@ -9,4 +9,6 @@ public interface Istudentservice{
     void deleteStudent(int id);
     List<Student> getAllStudents();
     Student getStudentbyId(int id);
+    List<Student> findReversedSortedList();
+    List<Student> findPaginatedList();;
 }

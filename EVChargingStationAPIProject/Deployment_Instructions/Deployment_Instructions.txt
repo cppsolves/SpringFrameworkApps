@@ -1,0 +1,58 @@
+
+=================== Project Setup=======================================================================================================================================
+
+1)Please find the Database schema of the entire project in the "Screenshots" folder in the current directory.The Database schema consists of two tables
+  as mentioned below:
+	a) Station_Details[Contains details as mentioned in the problem statement about the EV Staion except for the Station_Image].
+ 	b) Station_Image[Stores the EV Staion Image for every entry in the Station_Details table].
+	
+2) Every entry in the "Station_Details" table has a "One to One" mapping with every Image stored in the "Station_Image" table.The Backend codebase is equipped to handle
+   the Infinite Recursion problem.
+
+================== Deployment Instructions =============================================================================================================================
+	
+1) Please enter the sample Electronic station Images first in the Station_Images table. The sample images are given in the "sample images" folder.Please hit the below
+   API to insert the respective images in the "Station_Images" table in the form of "Multipart Data".
+	
+	http://localhost:8080/master/uploadimage
+	
+
+2) Upon entering the data in the "station_details" table, the backend code automatically maps the relevant "station_details" to its respective image. Please hit the below API
+   API to see this in action.
+   
+   http://localhost:8080/api/EVStation/saveStationDetails
+   
+3) Please find below the HTTP GET API request which gets all the "station_details" as mentioned in the problem statement.
+
+   http://localhost:8080/api/EVStation/getAllStations [Screenshot attached in the "screenshots" folder]
+   
+4) Please hit the below API to get the "Station_details" based on their ID.
+
+   http://localhost:8080/api/EVStation/GetStationDetailsById?id=? [Screenshot attached]
+   
+5) Please hit the below API to Update the pricing details of a EV station.
+
+   http://localhost:8080/api/EVStation/changePrice?id=1&price=34.7 [Screenshot attached]
+   
+6) Please hit the below API to sort the result set on "station_pricing" in "ASC" or "DESC" format as per the client requeirement.
+
+   http://localhost:8080/api/EVStation/GetByCustomOrderedPrice?sort=asc&param=stationPricing [Screenshot atatched]
+   
+7) Please hit the below API to paginate the result set as per the client requirement.
+
+   http://localhost:8080/api/EVStation/getByPageLimit?Limit=9 [Screenshot attached]
+
+8) Please hit the below API to delete the station_details from the table. This will automatically delete its respective Image in the "Station_Image" table.
+	
+   http://localhost:8080/api/EVStation/delete?id=1
+   
+================= JAR Implementation=================================================================================================================================
+
+1) Attempt to attach the JAR exceeded the Platform's threshold to accept the solution attachment's ZIP file size.
+
+Thanks and Regards
+Anshul Nair
+
+   
+
+   

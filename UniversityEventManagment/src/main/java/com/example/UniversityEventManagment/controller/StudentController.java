@@ -32,4 +32,12 @@ public class StudentController {
     public Student GETBYID(@PathVariable int id){
         return istudentservice.getStudentbyId(id);
     }
+    @GetMapping("GetStudentsDesc")
+    public List<Student> getDesc(){
+        return istudentservice.findReversedSortedList();
+    }
+    @GetMapping("findpaginatedResult")
+    public List<Student> findpaginatedList(){
+        return istudentservice.findPaginatedList();
+    }
 }

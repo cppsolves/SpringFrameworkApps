@@ -8,6 +8,7 @@ class UserManagementSystemRestUtApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
