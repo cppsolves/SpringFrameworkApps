@@ -21,6 +21,12 @@ public class Doctor {
     private String city;
     @Column(name = "Speciality")
     private String speciality;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "phone")
+    private String phone;
+    @Column(name = "name")
+    private String name;
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "patient_id")
     List<Patient> list = new ArrayList<>();
