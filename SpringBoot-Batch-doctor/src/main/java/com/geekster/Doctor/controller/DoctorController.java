@@ -1,104 +1,39 @@
 package com.geekster.Doctor.controller;
 
+import com.geekster.Doctor.Util.DoctorValidator;
 import com.geekster.Doctor.model.Doctor;
-import com.geekster.Doctor.model.Patient;
 import com.geekster.Doctor.service.DoctorService;
-import jakarta.annotation.Nullable;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.print.Doc;
-import java.util.*;
-
 @RestController
+@RequestMapping("master")
 public class DoctorController {
-
-
+    private DoctorService doctorService;
     @Autowired
-    DoctorService service;
-
-    @PostMapping(value = "/doctor")
-    public ResponseEntity<String> saveDoctor(@RequestBody String requestDoctor) {
-
-        JSONObject json = new JSONObject(requestDoctor);
-
-        List<String> validationList = validateDoctor(json);
-
-       if(validationList.isEmpty()) {
-           Doctor doctor = setDoctor(json);
-           service.saveDoctor(doctor);
-           return new ResponseEntity<>("Doctor saved", HttpStatus.CREATED);
-       } else {
-
-           String[] answer = Arrays.copyOf(
-                   validationList.toArray(), validationList.size(), String[].class);
-
-           return new ResponseEntity<>("Please pass these mandatory parameters- " +
-                   Arrays.toString(answer), HttpStatus.BAD_REQUEST);
-       }
-
+    public DoctorController(DoctorService doctorService){
+        this.doctorService = doctorService;
     }
-    @GetMapping(value = "/doctorbyid")
-    public Doctor getDoctor(@Nullable @RequestParam String doctorId) {
-        return service.getDoctorById(Integer.valueOf(doctorId));
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private List<String> validateDoctor(JSONObject json) {
-
-        List<String> errorList = new ArrayList<>();
-        if(!json.has("doctorName")) {
-            errorList.add("doctorName");
+    @PostMapping("/postDoctor")
+    public ResponseEntity<String> postDoc(@RequestBody String doctor){
+        JSONObject jsonObject = new JSONObject(doctor);
+        boolean validateEmail = DoctorValidator.validateEmail(jsonObject);
+        boolean validatePhone = DoctorValidator.validatePhone(jsonObject);
+        boolean validateCity = DoctorValidator.validateCity(jsonObject);
+        boolean validateName = DoctorValidator.validateName(jsonObject);
+        if(validatePhone&&validateCity&&validatePhone&&validateCity){
+            Doctor doctor1 = new Doctor();
+            doctor1.setCity(jsonObject.getString("city"));
+            doctor1.setSpeciality(jsonObject.getString("speciality"));
+            doctorService.addDoctor(doctor1);
         }
-
-        if(!json.has("specializedIn")) {
-            errorList.add("specializedIn");
-        }
-
-        return errorList;
-
+        return new ResponseEntity<>("Doctor saved", HttpStatusCode.valueOf(200));
     }
-
-
-    public Doctor setDoctor (JSONObject json) {
-        Doctor doctor = new Doctor();
-
-        String doctorName = json.getString("doctorName");
-        doctor.setDoctorName(doctorName);
-
-        String specializedIn = json.getString("specializedIn");
-        doctor.setSpecializedIn(specializedIn);
-
-        if(json.has("experience")) {
-            String exp = json.getString("experience");
-            doctor.setExperience(exp);
-        }
-
-        return doctor;
-
+    @DeleteMapping("/deleteDoctor")
+    public ResponseEntity<String> deleteDoc(@RequestBody Doctor doctor){
+        doctorService.deleteDoctor(doctor.getId());
+        return new ResponseEntity<>("doc deleted",HttpStatusCode.valueOf(204));
     }
-
-
-
-
-
-
 }

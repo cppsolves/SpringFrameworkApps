@@ -2,44 +2,20 @@ package com.geekster.Doctor.service;
 
 import com.geekster.Doctor.dao.DoctorRepository;
 import com.geekster.Doctor.model.Doctor;
-import com.geekster.Doctor.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class DoctorService {
-
+    private DoctorRepository doctorRepository;
     @Autowired
-    DoctorRepository repository;
-
-    public Doctor saveDoctor(Doctor doctor) {
-        String doctorName = doctor.getDoctorName();
-        doctorName = "Dr. " + doctorName;
-        doctor.setDoctorName(doctorName);
-        return repository.save(doctor);
+    public DoctorService(DoctorRepository doctorRepository){
+        this.doctorRepository = doctorRepository;
     }
-
-    public List<Doctor> getDoctor(String doctorId) {
-
-        List<Doctor> doctorList;
-
-        if(null != doctorId) {
-            doctorList = new ArrayList<>();
-            doctorList.add(repository.findById(Integer.valueOf(doctorId)).get());
-        } else {
-            doctorList = repository.findAll();
-        }
-        return doctorList;
+    public Doctor addDoctor(Doctor doctor){
+        return doctorRepository.save(doctor);
     }
-    public Doctor getDoctorById(Integer doctorId) {
-        return repository.findById(Integer.valueOf(doctorId)).get();
-    }
-    public List<Patient> getPatientsbyDocId(int docid){
-        Doctor doctor = repository.findById(docid).get();
-        return doctor.getPatientList();
+    public void deleteDoctor(Integer id){
+        doctorRepository.deleteById(id);
     }
 }
