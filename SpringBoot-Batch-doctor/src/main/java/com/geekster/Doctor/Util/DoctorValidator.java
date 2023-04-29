@@ -14,8 +14,6 @@ public class DoctorValidator {
         return Pattern.compile("^[a-z]{3,}$").matcher(doctor.getString("phone")).find();
     }
     public static boolean validateCity(JSONObject doctor){
-        Pattern pattern = Pattern.compile("^\\w{1,20}$");
-        Matcher matcher = pattern.matcher(doctor.getString("city"));
-        return matcher.find();
+        return Pattern.compile("^[a-z]{1,20}$").matcher(doctor.getString("phone")).find();
     }
 }
